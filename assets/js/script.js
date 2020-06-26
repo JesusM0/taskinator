@@ -10,6 +10,17 @@ var taskFormHandler = function() {
     var taskNameInput = document.querySelector("input[name='task-name']").value;
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
+    //This if statement checks to see if anything was written into the forms using the !(not) operator
+    //Also known as falsy values
+    if (!taskNameInput || !taskTypeInput) {
+        alert("Task form must be filled out completley!");
+        //Return false here means If a form field is empty, then function alerts a message, and returns false, to prevent the form from being submitted.
+        return false;
+    }
+
+    //.reset() is a <form> exclusive method that resets the form to its default state after submission... or so i think for now.
+    formEl.reset();
+
     //Turn taskDataObj into an object
     var taskDataObj = {
         name: taskNameInput,
